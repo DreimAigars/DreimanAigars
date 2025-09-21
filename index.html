@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SanCo Bus Line SIA — Pasažieru transports, loģistika un noliktavas</title>
+  <meta name="description" content="SanCo Bus Line SIA: pasažieru pārvadājumi, kravu loģistika un noliktavu risinājumi Baltijā. Adrese: 15–18 Ilmajas iela, Rīga, LV-1004. E-pasts: dreimaigars@zohomail.eu">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#e31b23;     /* kā Nova Poshta sarkans akcentam */
+      --brand-dark:#b1151a;
+      --ink:#1f2328;
+      --muted:#6a6f75;
+      --bg:#ffffff;
+      --bg-soft:#f6f7f9;
+      --card:#ffffff;
+      --border:#e6e8eb;
+      --ok:#22a06b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Header */
+    .topbar{background:var(--bg-soft);border-bottom:1px solid var(--border);font-size:14px;color:var(--muted)}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .topbar .row{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:8px 0}
+    .header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+    .brand svg{width:28px;height:28px}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{color:var(--ink);font-weight:500}
+    .cta{padding:10px 14px;background:var(--brand);color:#fff;border-radius:10px;font-weight:600}
+    .cta:hover{background:var(--brand-dark)}
+    @media(max-width:920px){ .menu{display:none}}
+
+    /* Hero like search */
+    .hero{background:linear-gradient(180deg,#fff, #f3f5f7);border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:28px;align-items:center;padding:40px 0}
+    .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);font-size:18px;margin:0 0 18px}
+    .widget{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+    .widget h3{margin:4px 0 12px;font-size:18px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-size:13px;color:var(--muted)}
+    input,select{height:42px;border:1px solid var(--border);border-radius:10px;padding:0 12px;font:inherit}
+    .widget .btn{height:46px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+    .hero-note{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}
+    .hero img{border-radius:18px}
+
+    /* Sections */
+    section{padding:56px 0;border-bottom:1px solid var(--border)}
+    section h2{font-size:28px;margin:0 0 10px}
+    section .lead{color:var(--muted);margin:0 0 24px}
+
+    /* Cards grid */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+    .card h3{margin:4px 0 8px}
+    .card p{color:var(--muted)}
+
+    @media(max-width:900px){ .cards{grid-template-columns:1fr}}
+
+    /* Gallery blocks */
+    .gallery{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+    .gallery img{border-radius:16px;height:100%;object-fit:cover}
+    .gallery .col{display:grid;grid-template-rows:1fr 1fr;gap:18px}
+    @media(max-width:900px){ .gallery{grid-template-columns:1fr}}
+
+    /* Process timeline with arrows */
+    .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+    .step{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px}
+    .step:after{content:"→";position:absolute;top:50%;right:-12px;transform:translateY(-50%);color:var(--muted);font-weight:700}
+    .step:last-child:after{display:none}
+    .step .num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--brand);color:#fff;font-weight:700}
+    .step h4{margin:10px 0 6px}
+    .step p{color:var(--muted);margin:0}
+    @media(max-width:900px){ .timeline{grid-template-columns:1fr} .step:after{display:none}}
+
+    /* Contact form + toast */
+    .contact-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .form{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px}
+    textarea{min-height:120px;border:1px solid var(--border);border-radius:10px;padding:10px;font:inherit}
+    .btn{height:46px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+    .btn:hover{background:var(--brand-dark)}
+    .toast{position:fixed;right:20px;bottom:20px;background:#fff;border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,.08);padding:14px 16px;border-left:6px solid var(--ok);border-radius:12px;color:var(--ink);display:none}
+    .toast.show{display:block}
+
+    /* Footer */
+    footer{background:#0f1114;color:#e9eaec}
+    .foot{display:flex;justify-content:space-between;gap:20px;padding:28px 0}
+    .foot a{color:#fff;text-decoration:underline}
+    .small{color:#b7bcc2;font-size:14px}
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div>Darba laiks: P.–Pk. 08:00–19:00</div>
+        <div>E-pasts: <a href="mailto:dreimaigars@zohomail.eu">dreimaigars@zohomail.eu</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <div class="header">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="3" ry="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M6 10h12M6 14h8" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          SanCo Bus Line
+        </div>
+        <div class="menu">
+          <a href="#par">Par mums</a>
+          <a href="#pakalpojumi">Pakalpojumi</a>
+          <a href="#parks">Autoparks</a>
+          <a href="#prieksrocibas">Priekšrocības</a>
+          <a href="#process">Kā strādājam</a>
+          <a class="cta" href="#kontakti">Pieteikt pārvadājumu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero with "quote" widget -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Pasažieru transports un loģistika visā Baltijā</h1>
+        <p>Mūsdienīgs autoparks, laikus izpilde un digitāli risinājumi kravām un pasažieriem. No maršruta plānošanas līdz noliktavai — viss vienuviet.</p>
+        <div class="hero-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Reāllaika sūtījumu uzskaite un braucienu monitorings.
+        </div>
+      </div>
+      <div class="widget">
+        <h3>Saņemiet pārvadājuma piedāvājumu</h3>
+        <form id="quoteForm" onsubmit="return sendQuote(event)">
+          <div class="grid-2">
+            <div class="field">
+              <label>No</label>
+              <input required placeholder="Piem., Rīga">
+            </div>
+            <div class="field">
+              <label>Uz</label>
+              <input required placeholder="Piem., Tallina">
+            </div>
+            <div class="field">
+              <label>Pakalpojums</label>
+              <select required>
+                <option value="">Izvēlēties</option>
+                <option>Pasažieru pārvadājumi</option>
+                <option>Kravu piegāde</option>
+                <option>Noliktavas pakalpojumi</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Datums</label>
+              <input type="date" required>
+            </div>
+          </div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:12px">
+            <input placeholder="Jūsu e-pasts" type="email" required>
+            <button class="btn" type="submit">Saņemt cenu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="par">
+    <div class="container">
+      <h2>Mēs pārvietojam cilvēkus un vērtības droši</h2>
+      <p class="lead">SanCo Bus Line SIA atrodas Rīgā un apvieno pasažieru transportu, kravu loģistiku un noliktavu pārvaldību. Strādājam Latvijā un visā Baltijā, izmantojot telemātiku, GPS un IT uzskaites sistēmas, lai katrs reiss un katra krava būtu caurskatāma. Mūsu komanda fokusējas uz punktualitāti, drošību un izmaksu paredzamību, piedāvājot elastīgus risinājumus uzņēmumiem, pašvaldībām un pasākumu organizatoriem.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="pakalpojumi">
+    <div class="container">
+      <h2>Ko mēs darām ik dienu</h2>
+      <p class="lead">Trīs pīlāri — pasažieri, kravas un noliktava — ar vienotu kvalitātes standartu.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Pasažieru pārvadājumi</h3>
+          <p>Autobusi un mikroautobusi sporta komandām, uzņēmumu transfēriem, skolu un tūrisma braucieniem. Kondicionēšana, Wi-Fi un profesionāli šoferi.</p>
+        </div>
+        <div class="card">
+          <h3>Kravu loģistika</h3>
+          <p>Maršrutu plānošana Baltijā un ES, tiešsaistes sūtījumu izsekošana un apdrošināšana. Nodrošinām termiņus arī “pīķa” sezonās.</p>
+        </div>
+        <div class="card">
+          <h3>Noliktavu risinājumi</h3>
+          <p>Drošas noliktavas ar piekļuves kontroli, skenēšanu un inventāra pārvaldību. Integrācijas ar jūsu ERP un e-komercijas platformām.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Block 1: Vehicle park -->
+  <section id="parks">
+    <div class="container">
+      <h2>Mūsu autoparks tuvplānā</h2>
+      <p class="lead">Dažādas ietilpības autobusi, kravas furgoni un piekabes — izvēlamies atbilstoši brauciena uzdevumam.</p>
+      <div class="gallery">
+        <img src="C:\сайты\Tour bus on the highway.jpg" alt="Tūrisma autobuss uz šosejas">
+        <div class="col">
+          <img src="C:\сайты\Column of cargo vans.jpg" alt="Kravas furgonu kolonna">
+          <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=800&auto=format&fit=crop" alt="Noliktavas plaukti">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages (Nova-style tiles) -->
+  <section id="prieksrocibas">
+    <div class="container">
+      <h2>Kāpēc klienti izvēlas mūs</h2>
+      <p class="lead">Konkrēti iemesli, kas ietekmē jūsu budžetu un mieru.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Drošība un disciplīna</h3>
+          <p>Regulāras tehniskās pārbaudes, apmācīti šoferi un dokumentēti SOP maršrutos ar augstāku riska profilu.</p>
+        </div>
+        <div class="card">
+          <h3>Digitāla caurskatāmība</h3>
+          <p>Reāllaika telemātika, atskaites un ETA prognozes. Integrācijas ar jūsu sistēmām, lai dati plūstu automātiski.</p>
+        </div>
+        <div class="card">
+          <h3>Serviss bez pārsteigumiem</h3>
+          <p>Fiksētas cenas, rezerves transports neparedzētām situācijām un 24/7 dežūra lieliem pasākumiem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Block 2: Mission / Story -->
+  <section>
+    <div class="container">
+      <h2>Mūsu misija</h2>
+      <p class="lead">Padarīt pārvadājumus paredzamus un patīkamus — pasažieriem, noliktavām un piegādes ķēdēm.</p>
+      <div class="gallery">
+        <div class="col">
+          <img src="C:\сайты\178905bdd2072b32793e85273bdb1a8e.jpg" alt="Komanda pie autobusa">
+          <img src="C:\сайты\Planning with maps and a tablet.jpg" alt="Plānošana ar kartēm un planšeti">
+        </div>
+        <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=1200&auto=format&fit=crop" alt="Ceļš un horizonts">
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="container">
+      <h2>Kā notiek sadarbība</h2>
+      <p class="lead">Vienkāršs trīs soļu ceļš no pieprasījuma līdz atskaitēm.</p>
+      <div class="timeline">
+        <div class="step">
+          <div class="num">1</div>
+          <h4>Pieprasījums un konsultācija</h4>
+          <p>Pastāstiet maršrutu, pasažieru skaitu vai kravas parametrus. Sagatavojam piedāvājumu tajā pašā darba dienā.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h4>Plāns un apstiprinājums</h4>
+          <p>Saskaņojam grafiku, pieturas, apdrošināšanu un rezerves risinājumus. Noslēdzam līgumu.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h4>Izpilde un atskaites</h4>
+          <p>Reāllaika monitorings un atskaites pēc reisa. Nepārtraukts atbalsts pasākumu laikā.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="kontakti">
+    <div class="container">
+      <h2>Sazinieties ar SanCo</h2>
+      <p class="lead">Aizpildiet formu — atbildēsim ar cenu un pieejamību.</p>
+      <div class="contact-wrap">
+        <form class="form" id="contactForm" onsubmit="return sendContact(event)">
+          <div class="field">
+            <label>Vārds, uzvārds</label>
+            <input required placeholder="Jūsu vārds">
+          </div>
+          <div class="field">
+            <label>E-pasts</label>
+            <input type="email" required placeholder="name@example.com">
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label>Tālrunis</label>
+              <input placeholder="+371 ...">
+            </div>
+            <div class="field">
+              <label>Tēma</label>
+              <select required>
+                <option value="">Izvēlēties</option>
+                <option>Pasažieru pārvadājumi</option>
+                <option>Kravu loģistika</option>
+                <option>Noliktavas pakalpojumi</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Ziņojums</label>
+            <textarea required placeholder="Īss apraksts par maršrutu vai kravu"></textarea>
+          </div>
+          <button class="btn" type="submit">Nosūtīt pieprasījumu</button>
+          <p class="small" style="margin-top:8px">Nosūtot formu, piekrītat datu apstrādei saskaņā ar privātuma noteikumiem.</p>
+        </form>
+        <div class="card">
+          <h3>Kontakti</h3>
+          <p><strong>SanCo Bus Line SIA</strong><br>15–18 Ilmajas iela, Rīga, LV-1004, Latvia</p>
+          <p>E-pasts: <a href="mailto:dreimaigars@zohomail.eu">dreimaigars@zohomail.eu</a></p>
+          <hr>
+          <p class="small">Biznesa klientiem piedāvājam rēķinu ar PVN, regulārus maršrutus un SLA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2025 SanCo Bus Line SIA. Visas tiesības aizsargātas.</div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Paldies! Pieprasījums saņemts. Mēs ar jums sazināsimies.</div>
+
+  <script>
+    function showToast(msg){
+      const t=document.getElementById('toast');
+      t.textContent=msg||'Paldies! Ziņa nosūtīta.';
+      t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'), 3500);
+      return false;
+    }
+    function sendQuote(e){e.preventDefault(); return showToast('Paldies! Piedāvājums tiks nosūtīts uz jūsu e-pastu.');}
+    function sendContact(e){e.preventDefault(); return showToast();}
+  </script>
+</body>
+</html>
