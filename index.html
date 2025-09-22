@@ -23,7 +23,7 @@
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-    a{color:var(--brand);text-decoration:none}
+ko    a{color:var(--brand);text-decoration:none}
     img{max-width:100%;display:block}
 
     /* Header */
@@ -217,9 +217,9 @@
       <h2>Mūsu autoparks tuvplānā</h2>
       <p class="lead">Dažādas ietilpības autobusi, kravas furgoni un piekabes — izvēlamies atbilstoši brauciena uzdevumam.</p>
       <div class="gallery">
-        <img src="C:\сайты\Tour bus on the highway.jpg" alt="Tūrisma autobuss uz šosejas">
+        <img src="https://st.depositphotos.com/2853475/4646/i/950/depositphotos_46469821-stock-photo-touristic-buses.jpg" alt="Tūrisma autobuss uz šosejas">
         <div class="col">
-          <img src="C:\сайты\Column of cargo vans.jpg" alt="Kravas furgonu kolonna">
+          <img src="https://i.pinimg.com/736x/c5/c4/08/c5c40830e0fa2daa939a5dcd4f56f210.jpg" alt="Kravas furgonu kolonna">
           <img src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=800&auto=format&fit=crop" alt="Noliktavas plaukti">
         </div>
       </div>
@@ -255,8 +255,8 @@
       <p class="lead">Padarīt pārvadājumus paredzamus un patīkamus — pasažieriem, noliktavām un piegādes ķēdēm.</p>
       <div class="gallery">
         <div class="col">
-          <img src="C:\сайты\178905bdd2072b32793e85273bdb1a8e.jpg" alt="Komanda pie autobusa">
-          <img src="C:\сайты\Planning with maps and a tablet.jpg" alt="Plānošana ar kartēm un planšeti">
+          <img src="https://i.pinimg.com/736x/17/89/05/178905bdd2072b32793e85273bdb1a8e.jpg" alt="Komanda pie autobusa">
+          <img src="https://i.pinimg.com/1200x/db/c2/9b/dbc29b56a87a3b85954b9a1a7c1b9cef.jpg" alt="Plānošana ar kartēm un planšeti">
         </div>
         <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?q=80&w=1200&auto=format&fit=crop" alt="Ceļš un horizonts">
       </div>
@@ -298,65 +298,3 @@
           <div class="field">
             <label>Vārds, uzvārds</label>
             <input required placeholder="Jūsu vārds">
-          </div>
-          <div class="field">
-            <label>E-pasts</label>
-            <input type="email" required placeholder="name@example.com">
-          </div>
-          <div class="grid-2">
-            <div class="field">
-              <label>Tālrunis</label>
-              <input placeholder="+371 ...">
-            </div>
-            <div class="field">
-              <label>Tēma</label>
-              <select required>
-                <option value="">Izvēlēties</option>
-                <option>Pasažieru pārvadājumi</option>
-                <option>Kravu loģistika</option>
-                <option>Noliktavas pakalpojumi</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label>Ziņojums</label>
-            <textarea required placeholder="Īss apraksts par maršrutu vai kravu"></textarea>
-          </div>
-          <button class="btn" type="submit">Nosūtīt pieprasījumu</button>
-          <p class="small" style="margin-top:8px">Nosūtot formu, piekrītat datu apstrādei saskaņā ar privātuma noteikumiem.</p>
-        </form>
-        <div class="card">
-          <h3>Kontakti</h3>
-          <p><strong>SanCo Bus Line SIA</strong><br>15–18 Ilmajas iela, Rīga, LV-1004, Latvia</p>
-          <p>E-pasts: <a href="mailto:info@sancobusline.eu">info@sancobusline.eu</a></p>
-          <hr>
-          <p class="small">Biznesa klientiem piedāvājam rēķinu ar PVN, regulārus maršrutus un SLA.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container foot">
-      <div>© 2025 SanCo Bus Line SIA. Visas tiesības aizsargātas.</div>
-    </div>
-  </footer>
-
-  <!-- Toast -->
-  <div class="toast" id="toast">Paldies! Pieprasījums saņemts. Mēs ar jums sazināsimies.</div>
-
-  <script>
-    function showToast(msg){
-      const t=document.getElementById('toast');
-      t.textContent=msg||'Paldies! Ziņa nosūtīta.';
-      t.classList.add('show');
-      setTimeout(()=>t.classList.remove('show'), 3500);
-      return false;
-    }
-    function sendQuote(e){e.preventDefault(); return showToast('Paldies! Piedāvājums tiks nosūtīts uz jūsu e-pastu.');}
-    function sendContact(e){e.preventDefault(); return showToast();}
-  </script>
-</body>
-</html>
-
-
