@@ -298,3 +298,66 @@ ko    a{color:var(--brand);text-decoration:none}
           <div class="field">
             <label>Vārds, uzvārds</label>
             <input required placeholder="Jūsu vārds">
+            </div>
+          <div class="field">
+            <label>E-pasts</label>
+            <input type="email" required placeholder="name@example.com">
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label>Tālrunis</label>
+              <input placeholder="+371 ...">
+            </div>
+            <div class="field">
+              <label>Tēma</label>
+              <select required>
+                <option value="">Izvēlēties</option>
+                <option>Pasažieru pārvadājumi</option>
+                <option>Kravu loģistika</option>
+                <option>Noliktavas pakalpojumi</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Ziņojums</label>
+            <textarea required placeholder="Īss apraksts par maršrutu vai kravu"></textarea>
+          </div>
+          <button class="btn" type="submit">Nosūtīt pieprasījumu</button>
+          <p class="small" style="margin-top:8px">Nosūtot formu, piekrītat datu apstrādei saskaņā ar privātuma noteikumiem.</p>
+        </form>
+        <div class="card">
+          <h3>Kontakti</h3>
+          <p><strong>SanCo Bus Line SIA</strong><br>15–18 Ilmajas iela, Rīga, LV-1004, Latvia</p>
+          <p>E-pasts: <a href="mailto:dreimaigars@zohomail.eu">dreimaigars@zohomail.eu</a></p>
+          <hr>
+          <p class="small">Biznesa klientiem piedāvājam rēķinu ar PVN, regulārus maršrutus un SLA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2025 SanCo Bus Line SIA. Visas tiesības aizsargātas.</div>
+      <div class="small">Vietne izstrādāta Nova-style principos: ātra navigācija, skaidri pakalpojumi, tieša poga uz pieteikumu.</div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Paldies! Pieprasījums saņemts. Mēs ar jums sazināsimies.</div>
+
+  <script>
+    function showToast(msg){
+      const t=document.getElementById('toast');
+      t.textContent=msg||'Paldies! Ziņa nosūtīta.';
+      t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'), 3500);
+      return false;
+    }
+    function sendQuote(e){e.preventDefault(); return showToast('Paldies! Piedāvājums tiks nosūtīts uz jūsu e-pastu.');}
+    function sendContact(e){e.preventDefault(); return showToast();}
+  </script>
+</body>
+</html>
+
+
